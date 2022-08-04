@@ -9,8 +9,6 @@ const divStyle = {
 }
 
 export default ({ data, onSelect }) => {
-    const [showModal, setShowModal] = useState(false)
-    const [currentTask, setCurrentTask] = useState({})
 
     return (
         <div style={divStyle}>

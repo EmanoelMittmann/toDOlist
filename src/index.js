@@ -13,16 +13,16 @@ new Server({
   seeds(server) {
     server.db.loadData({
       task: [
-        { title: "Work", status: "pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "pendente", description: "tomorrow, I work full-time" },
+        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
 
       ]
 

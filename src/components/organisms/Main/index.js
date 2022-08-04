@@ -16,9 +16,15 @@ const Main = () => {
   const [currentTask, setCurrentTask] = useState(0)
   const [page, setPage] = useState(0)
 
-  const handleChange = (option) => { //trazemos pra ca
+  const handleChange = (option) => { 
     const filter = tasks.filter(task =>
       clearStr(task.status) === (clearStr(option)) && task
+    )
+    setFilteredTasks(filter)
+  }
+  const handleChangeTitle = (title) => {
+    const filter = tasks.filter(task => 
+      clearStr(task.title) === (clearStr(title)) && task
     )
     setFilteredTasks(filter)
   }
@@ -39,6 +45,7 @@ const Main = () => {
       <MainNav />
       <SectionTask
         onFilter={handleChange}
+        onFiltertitle={handleChangeTitle}
         onAdd={() => {
           setCurrentTask(0)
           setOpenModal(true)

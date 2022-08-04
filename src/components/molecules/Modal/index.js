@@ -7,6 +7,7 @@ import axios from 'axios'
 import { useEffect, useState } from "react"
 
 const Modal = ({ id, setOpenModal }) => {
+    const [mark, setMark] = useState("")
     const [title, setTitle] = useState("")
     const [status, setStatus] = useState("")
     const [description, setDescription] = useState("")
@@ -53,6 +54,11 @@ const Modal = ({ id, setOpenModal }) => {
                 .catch(error => setError(error.response.data.message))
 
     }
+
+    useEffect(() => {
+        setMark(status)
+    },[status])
+    console.log(mark)
 
     useEffect(() => {
         id && axios
