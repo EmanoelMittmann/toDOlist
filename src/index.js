@@ -14,15 +14,14 @@ new Server({
     server.db.loadData({
       task: [
         { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
-        { title: "Work", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "Trabalhando", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "Caminhando", status: "Fazendo", description: "tomorrow, I work full-time" },
+        { title: "Refazendo", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "iniciando", status: "Fazendo", description: "tomorrow, I work full-time" },
+        { title: "Conquistando", status: "Pendente", description: "tomorrow, I work full-time" },
+        { title: "Naturalizando", status: "Fazendo", description: "tomorrow, I work full-time" },
+        { title: "Constância", status: "Fazendo", description: "tomorrow, I work full-time" },
+        { title: "Maquiavelico", status: "Pendente", description: "tomorrow, I work full-time" },
 
       ]
 

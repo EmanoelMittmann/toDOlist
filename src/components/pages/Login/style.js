@@ -4,7 +4,6 @@ export const ContainerForm = styled.form`
     height: 100vh;
     float: right;
     box-sizing: border-box;
-    // background-color: #cce4d1;
     background: -webkit-linear-gradient(right,#1693a5, #a0ded6);
     width: 40vw;
     box-shadow: 0.6px 0 9px gray;

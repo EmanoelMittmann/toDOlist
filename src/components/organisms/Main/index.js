@@ -5,7 +5,7 @@ import Shelf from '../Shelf/index'
 import axios from 'axios'
 import Modal from '../../molecules/Modal'
 
-function clearStr(str) { //vamos fazer uma funçaõ pra limpar caracteres maiusculos, pra facilitar a busca
+function clearStr(str) {
   return str.toString().toLowerCase().trim()
 }
 
