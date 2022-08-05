@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { BtnPages } from './style'
 import MainNav from '../../molecules/mainNav'
 import SectionTask from '../../molecules/SectionTask'
 import Shelf from '../Shelf/index'
@@ -37,7 +38,10 @@ const Main = () => {
         setFilteredTasks(response.data.task)
       })
       .catch(err => console.error(err))
+
   }, [openModal, page])
+
+
 
   return (
     <>
@@ -58,9 +62,9 @@ const Main = () => {
         }}
         data={filteredTasks}
       />
-      <button disabled={page < 1} onClick={() => setPage(page - 1)}>Prox</button>
+      <BtnPages disabled={page < 1} onClick={() => setPage(page - 1)}>Prev</BtnPages>
       {page}
-      <button disabled={filteredTasks.length < 10} onClick={() => setPage(page + 1)}>Prev</button>
+      <BtnPages disabled={filteredTasks.length < 10} onClick={() => setPage(page + 1)}>Prox</BtnPages>
     </>
   )
 }

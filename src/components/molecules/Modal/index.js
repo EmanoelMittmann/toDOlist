@@ -7,7 +7,6 @@ import axios from 'axios'
 import { useEffect, useState } from "react"
 
 const Modal = ({ id, setOpenModal }) => {
-    const [mark, setMark] = useState("")
     const [title, setTitle] = useState("")
     const [status, setStatus] = useState("")
     const [description, setDescription] = useState("")
@@ -56,11 +55,6 @@ const Modal = ({ id, setOpenModal }) => {
     }
 
     useEffect(() => {
-        setMark(status)
-    },[status])
-    console.log(mark)
-
-    useEffect(() => {
         id && axios
             .patch(`/tasks/${id}`)
             .then(response => {
@@ -86,7 +80,7 @@ const Modal = ({ id, setOpenModal }) => {
                 <InputSelect
                     id={id}
                     onChange={(e) => setStatus(e.target.value)}
-                    value={status}
+                    value = {id ? status : null}
                 />
                 <Textarea
                     onChange={(e) => setDescription(e.target.value)}

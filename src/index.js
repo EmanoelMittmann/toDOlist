@@ -32,7 +32,7 @@ new Server({
     this.get('/users', () => {
       return {
         users: [
-          { "id": 1, "email": "emanoel@gmail.com", "password": "12345678" }
+          { "id": 1, "email": "Admin@gmail.com", "password": "12345678" }
         ]
       }
     })
