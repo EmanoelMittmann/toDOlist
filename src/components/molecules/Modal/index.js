@@ -6,9 +6,10 @@ import Button from "../../atoms/Buttom/index"
 import axios from 'axios'
 import { useEffect, useState } from "react"
 
-const Modal = ({ id, setOpenModal }) => {
+const Modal = ({ id, setOpenModal,color }) => {
     const [title, setTitle] = useState("")
     const [status, setStatus] = useState("")
+    const [Color , setColor] = useState("")
     const [description, setDescription] = useState("")
     const [error, setError] = useState("")
     const [message, setMessage] = useState("")
@@ -20,37 +21,49 @@ const Modal = ({ id, setOpenModal }) => {
         }
     }
 
-    function resetInputs() {
-        setTitle("")
-        setDescription("")
-        setStatus("")
-        setMessage("Enviado com sucesso!")
-    }
-
     const styleParagraph = {
+        color:Color,
         fontWeight: "bold",
-        color: "green",
         fontFamily: "Roboto, sans-serif"
     }
 
+    function resetInputs() {
+            setTitle("")
+            setDescription("")
+            setStatus("")
+            setMessage("Enviado com sucesso!")
+            setColor("green")
+    }
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
-
+      
         const data = {
             title: title,
             status: status,
             description: description
         }
 
-        id
-            ? axios
-                .put(`/tasks/${id}`, data)
-                .then(() => resetInputs())
-                .catch(error => setError(error.response.data.message))
-            : axios
-                .post('/tasks', data)
-                .then(() => resetInputs())
-                .catch(error => setError(error.response.data.message))
+        if( title === "" && description === "" && status === ""){
+            setMessage("Preencha todos os campos!")
+            setColor("red")
+        }
+        else{
+            id
+                ? axios
+                    .put(`/tasks/${id}`, data)
+                    .then(() => {
+                        resetInputs()
+                        setOpenModal(false)
+                    })
+                    .catch(error => setError(error.response.data.message))
+                : axios
+                    .post('/tasks', data)
+                    .then(() => resetInputs())
+                    .catch(error => setError(error.response.data.message))
+        }
+
 
     }
 
