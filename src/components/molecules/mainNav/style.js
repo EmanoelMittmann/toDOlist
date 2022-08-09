@@ -8,5 +8,6 @@ export const Navigation = styled.div`
     height: 10vh;
     background-color: ##f6f8ee; 
     box-shadow: 0.4px 0 10px gray;
+    cursor: pointer;
  
 `

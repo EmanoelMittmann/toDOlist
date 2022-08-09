@@ -1,13 +1,17 @@
-import React from 'react'
-import Main from '../../organisms/Main'
+import Main from "../../organisms/Main";
+import { IsAuth } from "../../templates/isAuth";
 
-const index = () => {
+
+
+const Index = () => {
+
+
 
   return (
-    <>
-        <Main/>
-    </>
-  )
-}
+    <IsAuth>
+        <Main />
+    </IsAuth>
+  );
+};
 
-export default index
+export default Index;

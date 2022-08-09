@@ -17,8 +17,8 @@ const InputSelect = ({ id, onChange, value }) => {
 
   return (
     <InputSelectContainer onChange={onChange} value={value}>
-      <InputSelectContainerPlaceholder disabled selected>
-        <p>Status</p>
+      <InputSelectContainerPlaceholder disabled defaultValue>
+        Status
       </InputSelectContainerPlaceholder>
       {filteredOptions.map((opt) => (
         <InputSelectOption value={opt.value} key={opt.id} >

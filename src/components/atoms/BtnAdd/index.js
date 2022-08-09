@@ -7,7 +7,7 @@ const BtnAdd = (props) => {
   return (
     <> 
         <ButtonAdd {...props}>
-          <i class="bi bi-plus"></i>
+          <i className="bi bi-plus"></i>
         </ButtonAdd>
     </>
   )

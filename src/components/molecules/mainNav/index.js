@@ -1,4 +1,4 @@
-import { Navigation, LogoText } from "./style"
+import { Navigation } from "./style"
 import BtnLogout from '../../atoms/Btnlogout/index'
 import { useNavigate } from "react-router-dom"
 
@@ -7,7 +7,10 @@ const MainNav = () => {
   const navigate = useNavigate()
 
   function getEmail() {
-    const user = JSON.parse(localStorage.getItem("login"))
+    const user = JSON.parse(localStorage.getItem("login")) || null
+    if(user === null) {
+      return 'teste'
+    }
     return user.email
   }
 
@@ -18,9 +21,9 @@ const MainNav = () => {
   }
 
   return (
-    <Navigation>
+    <Navigation onClick={handleClick}>
       <h3>{getEmail()}</h3>
-      <p onClick={handleClick}><BtnLogout /></p>
+      <BtnLogout/>
     </Navigation>
   )
 }

@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { Server, Model } from 'miragejs'
+import { Server, Model, Response } from 'miragejs'
 
 new Server({
 
   models: {
     task: Model,
   },
+  logging:false,
 
   seeds(server) {
     server.db.loadData({
@@ -22,19 +23,23 @@ new Server({
         { title: "Naturalizando", status: "Fazendo", description: "tomorrow, I work full-time" },
         { title: "Constância", status: "Fazendo", description: "tomorrow, I work full-time" },
         { title: "Maquiavelico", status: "Pendente", description: "tomorrow, I work full-time" },
-
+      ],
+      users: [
+        { id: 1, email: "Admin@gmail.com", password: "12345678" }
       ]
-
     })
   },
 
   routes() {
-    this.get('/users', () => {
-      return {
-        users: [
-          { "id": 1, "email": "Admin@gmail.com", "password": "12345678" }
-        ]
+
+    this.post('/users', (schema, request) => {
+      const {email, password} = JSON.parse(request.requestBody)
+
+      if(email === schema.db.users[0].email && password === schema.db.users[0].password){
+        return new Response(201, {some:"header"}, {message: ["Usuario Autenticado com sucesso"]})
       }
+      return new Response(400 , {some:"header"}, {errors: ["Existe campos inválidos"]})
+
     })
 
     this.get('/tasks/:page/:limit', function (schema, request) {
@@ -50,13 +55,21 @@ new Server({
       }
     })
 
-    this.get('/tasks/search', (schema, request) => {
-      return schema.db.task.where({ status: request.requestBody }).limit = 10
-    })
-
-    this.patch('/tasks/:id', (schema, request) => {
+    this.get('/tasks/:id', (schema, request) => {
       let id = request.params.id
       return schema.db.task.find(id)
+    })
+
+    this.get('/tasksStatus/:status', (schema, request) => {
+      const requestStatus = request.params.status
+
+      return schema.db.task.filter(sts => sts.status === requestStatus)
+    })
+
+    this.get('/tasks/:title', (schema, request) => {
+      const titleFiltered = request.params.title
+
+      return schema.db.task.filter(character => character.title.includes(titleFiltered))
     })
 
     this.put('/tasks/:id', function (schema, request) {

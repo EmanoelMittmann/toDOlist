@@ -69,7 +69,7 @@ const Modal = ({ id, setOpenModal,color }) => {
 
     useEffect(() => {
         id && axios
-            .patch(`/tasks/${id}`)
+            .get(`/tasks/${id}`)
             .then(response => {
                 const infos = response.data
                 setDescription(infos.description)
