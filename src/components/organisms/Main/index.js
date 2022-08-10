@@ -6,16 +6,13 @@ import Shelf from "../Shelf/index";
 import axios from "axios";
 import Modal from "../../molecules/Modal";
 
-function clearStr(str) {
-  return str.toString().toLowerCase().trim();
-}
-
 const Main = () => {
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [currentTask, setCurrentTask] = useState(0);
   const [page, setPage] = useState(0);
+  const [status, setStatus] = useState("Status")
 
   const handleChange = (option) => {
     axios
@@ -56,6 +53,8 @@ const Main = () => {
       <SectionTask
         onFilter={handleChange}
         onFiltertitle={handleChangeTitle}
+        value={status}
+        setStatus={setStatus}
         onAdd={() => {
           setCurrentTask(0);
           setOpenModal(true);

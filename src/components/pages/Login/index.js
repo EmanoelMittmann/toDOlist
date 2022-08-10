@@ -1,4 +1,4 @@
-import { ContainerForm, LogoText } from "./style";
+import { ContainerForm, LogoText, ContainerChildrenForm} from "./style";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputText from "../../atoms/InputText/index";
@@ -25,7 +25,7 @@ const Login = () => {
           "login",
           JSON.stringify({
             userLogin: true,
-            email: Email 
+            email: Email,
           })
         );
         navigate("/home");
@@ -36,16 +36,18 @@ const Login = () => {
   return (
     <IsAuth>
       <ContainerForm onSubmit={handleSubmit}>
+        <ContainerChildrenForm>
         <LogoText>Todo List</LogoText>
-        <InputText onChange={(e) => setEmail(e.target.value)} value={Email} />
-        <InputText
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          placeholder="Senha"
-          value={Password}
-        />
-        <Button type="submit" />
+          <InputText onChange={(e) => setEmail(e.target.value)} value={Email} />
+          <InputText
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="Senha"
+            value={Password}
+          />
+          <Button type="submit" />
         <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>
+        </ContainerChildrenForm>
       </ContainerForm>
     </IsAuth>
   );

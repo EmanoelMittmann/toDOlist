@@ -1,31 +1,32 @@
-import { Navigation } from "./style"
-import BtnLogout from '../../atoms/Btnlogout/index'
-import { useNavigate } from "react-router-dom"
+import { Navigation, NavigationChildren } from "./style";
+import BtnLogout from "../../atoms/Btnlogout/index";
+import { useNavigate } from "react-router-dom";
 
 const MainNav = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function getEmail() {
-    const user = JSON.parse(localStorage.getItem("login")) || null
-    if(user === null) {
-      return 'teste'
+    const user = JSON.parse(localStorage.getItem("login")) || null;
+    if (user === null) {
+      return "teste";
     }
-    return user.email
+    return user.email;
   }
 
   const handleClick = (e) => {
-    e.preventDefault()
-    localStorage.removeItem("login")
-    navigate('/')
-  }
+    e.preventDefault();
+    localStorage.removeItem("login");
+    navigate("/");
+  };
 
   return (
-    <Navigation onClick={handleClick}>
-      <h3>{getEmail()}</h3>
-      <BtnLogout/>
+    <Navigation>
+      <NavigationChildren onClick={handleClick}>
+        <h3>{getEmail()}</h3>
+        <BtnLogout />
+      </NavigationChildren>
     </Navigation>
-  )
-}
+  );
+};
 
-export default MainNav
+export default MainNav;

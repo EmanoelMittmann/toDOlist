@@ -6,9 +6,9 @@ import Button from "../../atoms/Buttom/index"
 import axios from 'axios'
 import { useEffect, useState } from "react"
 
-const Modal = ({ id, setOpenModal,color }) => {
+const Modal = ({ id, setOpenModal }) => {
     const [title, setTitle] = useState("")
-    const [status, setStatus] = useState("")
+    const [status, setStatus] = useState("Status")
     const [Color , setColor] = useState("")
     const [description, setDescription] = useState("")
     const [error, setError] = useState("")
@@ -45,7 +45,7 @@ const Modal = ({ id, setOpenModal,color }) => {
             description: description
         }
 
-        if( title === "" && description === "" && status === ""){
+        if( title === "" || description === "" || status === "Status"){
             setMessage("Preencha todos os campos!")
             setColor("red")
         }
@@ -63,13 +63,11 @@ const Modal = ({ id, setOpenModal,color }) => {
                     .then(() => resetInputs())
                     .catch(error => setError(error.response.data.message))
         }
-
-
     }
 
     useEffect(() => {
         id && axios
-            .get(`/tasks/${id}`)
+            .get(`/task/${id}`)
             .then(response => {
                 const infos = response.data
                 setDescription(infos.description)
@@ -93,7 +91,7 @@ const Modal = ({ id, setOpenModal,color }) => {
                 <InputSelect
                     id={id}
                     onChange={(e) => setStatus(e.target.value)}
-                    value = {id ? status : null}
+                    value = {status}
                 />
                 <Textarea
                     onChange={(e) => setDescription(e.target.value)}

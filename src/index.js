@@ -55,7 +55,7 @@ new Server({
       }
     })
 
-    this.get('/tasks/:id', (schema, request) => {
+    this.get('/task/:id', (schema, request) => {
       let id = request.params.id
       return schema.db.task.find(id)
     })
@@ -69,7 +69,7 @@ new Server({
     this.get('/tasks/:title', (schema, request) => {
       const titleFiltered = request.params.title
 
-      return schema.db.task.filter(character => character.title.includes(titleFiltered))
+      return schema.db.task.filter(character => character.title.toLowerCase().includes(titleFiltered))
     })
 
     this.put('/tasks/:id', function (schema, request) {
